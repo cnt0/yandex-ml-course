@@ -12,6 +12,11 @@ def z(x, y, w):
     return 1.0 + np.exp(-y * x.dot(w))
 
 
+def a(x, w):
+    """sigmoid function"""
+    return 1 / z(x, 1, w)
+
+
 def step_L2(x, y, w, k, C):
     l = len(x)
     return np.array([sum(y[i] * x[i][j] * (1 - 1 / z(x[i], y[i], w))
@@ -49,9 +54,6 @@ def regression_L2(x, y, w=np.array([0, 0]), e=1e-5, k=0.1, C=10.0):
     print('iterations with regularization: {}'.format(cnt))
     return wn
 
-
-def a(x, w):
-    return 1 / (1 + np.exp(-x.dot(w)))
 
 data = pandas.read_csv('data-logistic.csv', header=None)
 y = np.array(data[data.columns[0]])
