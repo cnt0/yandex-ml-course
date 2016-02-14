@@ -2,7 +2,6 @@
 """Support Vector Machine"""
 
 import numpy as np
-import pandas
 
 from sklearn import datasets
 from sklearn.cross_validation import KFold
