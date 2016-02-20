@@ -26,9 +26,8 @@ gs.fit(data, newsgroups.target)
 clf2 = SVC(kernel='linear', random_state=241, C=gs.best_score_)
 clf2.fit(data, newsgroups.target)
 
-names = vectorizer.get_feature_names()
-ans = [names[i] for i in
-       np.array(clf2.coef_.indices)[np.argsort(np.abs(clf2.coef_.data))[-10:]]]
+names = np.array(vectorizer.get_feature_names())
+ans = names[clf2.coef_.indices][np.argsort(np.abs(clf2.coef_.data))][-10:]
 
 ans.sort()
 with open('ans.txt', 'w') as f:
